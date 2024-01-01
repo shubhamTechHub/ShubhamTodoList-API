@@ -7,12 +7,12 @@ require('../src/db/conn');
 
 const port = process.env.PORT || 3000;
 
-// Testing Network Calls API
+// Testing Network Calls - API
 app.get('/', (req, res) => {
     res.send("Hello World!");
 });
 
-// Add todo document API
+// create todo - API
 app.post('/todos/', async (req, res) => {
     try {
         const todo = await Todo.create(req.body);
@@ -23,10 +23,22 @@ app.post('/todos/', async (req, res) => {
     }
 });
 
-// get todo API
+// fetch todos - API
 app.get('/todos/', async (req, res) => {
     try {
         const todo = await Todo.find({});
+        res.status(200).json(todo);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({message: error.message});
+    }
+});
+
+// fetch a todo by ID - API
+app.get('/todos/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const todo = await Todo.findById(id);
         res.status(200).json(todo);
     } catch (error) {
         console.log(error.message);
