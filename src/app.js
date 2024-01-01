@@ -23,6 +23,17 @@ app.post('/todos/', async (req, res) => {
     }
 });
 
+// get todo API
+app.get('/todos/', async (req, res) => {
+    try {
+        const todo = await Todo.find({});
+        res.status(200).json(todo);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({message: error.message});
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server Running at http://localhost:3000/`);
