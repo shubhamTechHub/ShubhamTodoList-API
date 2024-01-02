@@ -4,28 +4,27 @@ const todosShema = mongoose.Schema(
     {
         todo: {
             type: String,
-            required: [true, "Please enter a TODO task"],
-            unique: true,
+            required: [true, "Please add the todo task"],
             trim: true
         },
         priority: {
             type: String,
-            required: true,
+            required: [true, "Please add the priority"],
             trim: true
         },
         status: {
             type: String,
-            required: true,
+            required: [true, "Please add the status"],
             trim: true
         },
         category: {
             type: String,
-            required: true,
+            required: [true, "Please add the category"],
             trim: true
         },
         dueDate: {
             type: Date,
-            required: true,
+            required: [true, "Please add the due date"],
             trim: true
         }
     },
@@ -34,6 +33,4 @@ const todosShema = mongoose.Schema(
     }
 )
 
-const Todo = mongoose.model("Todo", todosShema);
-
-module.exports = Todo;
+module.exports = mongoose.model("Todo", todosShema);
