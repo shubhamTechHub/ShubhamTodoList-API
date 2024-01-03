@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const todosShema = mongoose.Schema(
+const todosSchema = mongoose.Schema(
     {
         todo: {
             type: String,
@@ -33,4 +33,4 @@ const todosShema = mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model("Todo", todosShema);
+module.exports = mongoose.model("Todo", todosSchema);

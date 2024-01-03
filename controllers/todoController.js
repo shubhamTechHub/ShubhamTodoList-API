@@ -4,7 +4,7 @@ const Todo = require('../models/todoModel');
 //@desc Get all todos
 //@route GET /api/contact
 //@access public
-const geTodos = asyncHandler(async (req, res) => {
+const getTodos = asyncHandler(async (req, res) => {
     const todo = await Todo.find({});
     res.status(200).json(todo);
 });
@@ -73,4 +73,4 @@ const deleteTodo = asyncHandler(async (req, res) => {
     res.status(200).json(deletedTodo);
 });
 
-module.exports = {geTodos, createTodo, getTodo, updateTodo, deleteTodo};
+module.exports = {getTodos, createTodo, getTodo, updateTodo, deleteTodo};
