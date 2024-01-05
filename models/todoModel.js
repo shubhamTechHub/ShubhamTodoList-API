@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const todosSchema = mongoose.Schema(
     {
+        user_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "User"
+        },
         todo: {
             type: String,
             required: [true, "Please add the todo task"],
@@ -31,6 +36,6 @@ const todosSchema = mongoose.Schema(
     {
         timestamps: true
     }
-)
+);
 
 module.exports = mongoose.model("Todo", todosSchema);
